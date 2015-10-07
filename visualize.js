@@ -71,7 +71,10 @@ d3.json("jsondata.json", function(error, json){
 		 .colors(colorScale);
 
 	rainDim=ndx.dimension(function(d){
-		return d.rain;
+		if (d.rain=='rain0')
+			return 'not rain';
+		else
+			return 'rain';
 	});
 	rainGroup=rainDim.group();
 	pie2=dc.pieChart('#rain-pie')
