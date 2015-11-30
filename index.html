@@ -1,28 +1,107 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Hank Quinlan, Horrible Cop</title>
-		<link rel="stylesheet" type="text/css" href="/css/main.css">
+		<title>Dashboard</title>
+		<script src='javascripts/d3.js' type='text/javascript'></script>
+		<script src='javascripts/crossfilter.js' type='text/javascript'></script>
+		<script src='javascripts/dc.js' type='text/javascript'></script>
+		<script src='javascripts/tooltip.js' type='text/javascript'></script>
+		<script src='javascripts/jquery-1.9.1.min.js' type='text/javascript'></script>
+		<script src='javascripts/bootstrap.min.js' type='text/javascript'></script>
+		<link href='stylesheets/bootstrap.min.css' rel='stylesheet' type='text/css'>
+		<link href='stylesheets/dc.css' rel='stylesheet' type='text/css'>
+		
+		<script src='visualize.js' type='text/javascript'></script>
+		
+		<style type="text/css">
+			div.container { 
+			    padding-top: 0px; 
+			    width: initial;
+			    margin-left: 75px;
+			    margin-right: 75px;
+			    /*border:solid 1px;*/
+			}
+			.span2, .span5, .span6, .span8, .span12, .container {
+				border:20;
+			}
+
+			.dc-chart g.row text {
+		    		fill: black;
+			}
+			.toflow {
+				overflow: auto;
+				height:550px;
+				width: 300px
+			}
+			.toflow2 {
+				overflow: auto;
+				height:340px;
+			}
+			.toflow3 {
+				overflow: auto;
+				height:360px;
+			}
+			}
+			p.normal{
+				font-size: 15px;
+			}
+		</style>
 	</head>
 	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
-        		<li><a href="/cv">CV</a></li>
-        		<li><a href="/blog">Blog</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
-    		<div class="blurb">
-        		<h1>Hi there, I'm Hank Quinlan!</h1>
-				<p>I'm best known as the horrible cop from <em>A Touch of Evil</em> Don't trust me. <a href="/about">Read more about my life...</a></p>
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
+		<div class='container'>
+			<div class='overline' style='margin-left:100px'>
+				<h3>Overview of Emergency Dealing Time Data</h5>
+				<h5><em>Project Demo: OEM's Emergency Dealing Time prediction  | Team: Help4;  Members: Ziyan Feng, Yiqian Jin, Yue Guo, Yubo Han</em></h5>
+				<h5><em>Data Science Hackathon, Columbia University, Oct.4 2015</em></h5>
+			</div>
+				<div class='span8' id='date-barchart'>
+					<h4>Emergency Date</h4>
+				</div>
+				<div class='span3' id='quarter-rowchart'>
+					<h4>time range the emergency happened</h4>
+					<!--<p>range1: 00:00-6:00</p>-->
+					<!--<p>range2: 06:00-12:00</p>-->
+		
+				</div>
+				<div class='span2' id='weekend-pie'>
+					<h4 style='margin-left:30px'>if Weekend</h4>
+				</div>
+				<div class='span1' id='rain-pie'>
+					<h4 style='margin-left:10px'>if Rain</h4>
+				</div>
+				
+		</div>
+		
+		<div class='container'>
+			
+				<div class='span3 toflow' id='type-chart'>
+					<h4>Emergency Type</h4>
+				</div>
+				<div class='span3 toflow' id='borough-chart'>
+					<h4>Borough </h4>
+				</div>
+				<div class='span2' id='scatter-chart'>
+					<h4>Dealing Time</h4>
+					<img src="Picture1.png" alt=""></img>
+				</div>
+				<div class='span3 toflow' id='level-chart'>
+					<h4>Dealing Time Category(to predict)</h4>
+					<p>category1: 0-3h</p>
+					<p>category2: 3-24h</p>
+					<p>category3: 24h-one week</p>
+					<p>category4: one week-one month</p>
+					<p>category5: more than one month</p>
+				</div>
+				<div>
+		        	<a href="javascript:dc.filterAll(); dc.renderAll();" style='font: 17px sans-serif' >Reset All</a>
+		    	</div>
+		
+				
+		</div>
 		<footer>
     		<ul>
-        		<li><a href="mailto:hankquinlanhub@gmail.com">email</a></li>
-        		<li><a href="https://github.com/hankquinlan">github.com/hankquinlan</a></li>
+        		<li><a href="mailto:yj2342@columbia.edu">email</a></li>
+        		<li><a href="https://github.com/aliciajin">github.com/aliciajin</a></li>
 			</ul>
 		</footer>
 	</body>

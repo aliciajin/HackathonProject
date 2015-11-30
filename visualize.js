@@ -43,6 +43,7 @@ d3.json("jsondata.json", function(error, json){
 	quarterGroup=quarterDim.group();
 	console.log(quarterGroup.all());
 	var quarter = dc.rowChart('#quarter-rowchart');
+	var quarter_range=['0:00-6:00: ', '6:00-12:00: ', '12:00-18:00: ', '18:00-24:00: ']
 	quarter.width(200)
 		  .height(250)
 		  .margins({top: 0, left: 5, right: 10, bottom: 30})
@@ -51,7 +52,7 @@ d3.json("jsondata.json", function(error, json){
 		  .dimension(quarterDim)
 		  .group(quarterGroup)
 		  .colors(colorScale)
-		  .label(function (d){ return 'time range '+d.key+' : '+d.value; });
+		  .label(function (d){ return quarter_range[d.key-1] + d.value; });
 
 
 // for pie
@@ -70,7 +71,10 @@ d3.json("jsondata.json", function(error, json){
 		 .colors(colorScale);
 
 	rainDim=ndx.dimension(function(d){
-		return d.rain;
+		if (d.rain=='rain0')
+			return 'not rain';
+		else
+			return 'rain';
 	});
 	rainGroup=rainDim.group();
 	pie2=dc.pieChart('#rain-pie')
